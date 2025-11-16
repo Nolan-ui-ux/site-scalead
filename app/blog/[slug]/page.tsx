@@ -1,3 +1,5 @@
+'use client';
+
 import { notFound } from 'next/navigation';
 import Section from '@/components/ui/Section';
 import Badge from '@/components/ui/Badge';
