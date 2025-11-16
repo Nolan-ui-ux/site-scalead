@@ -17,6 +17,14 @@ const navigation = [
     ],
   },
   {
+    label: 'Scraping',
+    items: [
+      { label: 'Sales Navigator (LinkedIn)', href: '/scraping-sales-navigator' },
+      { label: 'Google Maps (Local)', href: '/scraping-google-maps' },
+      { label: 'Tech Stack (Technologies)', href: '/scraping-tech-stack' },
+    ],
+  },
+  {
     label: 'Ressources',
     items: [
       { label: 'Méthodologie', href: '/methodologie' },

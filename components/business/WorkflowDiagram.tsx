@@ -1,39 +1,87 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 interface WorkflowNode {
   id: string;
   label: string;
+  description: string;
+  metric?: string;
   icon: 'scraping' | 'enrichment' | 'filter' | 'email' | 'linkedin' | 'meeting';
   color: string;
 }
 
 const nodes: WorkflowNode[] = [
-  { id: '1', label: 'Scraping Sales Nav', icon: 'scraping', color: 'blue' },
-  { id: '2', label: 'Enrichissement', icon: 'enrichment', color: 'purple' },
-  { id: '3', label: 'Filtre ICP', icon: 'filter', color: 'indigo' },
-  { id: '4', label: 'Campagne Email', icon: 'email', color: 'blue' },
-  { id: '5', label: 'Campagne LinkedIn', icon: 'linkedin', color: 'indigo' },
-  { id: '6', label: 'Pipeline RDV', icon: 'meeting', color: 'green' },
-];
-
-const connections = [
-  { from: '1', to: '2' },
-  { from: '2', to: '3' },
-  { from: '3', to: '4' },
-  { from: '3', to: '5' },
-  { from: '4', to: '6' },
-  { from: '5', to: '6' },
+  {
+    id: '1',
+    label: 'Scraping Sales Nav',
+    description: 'Extraction automatique depuis LinkedIn',
+    metric: '4 500+ prospects',
+    icon: 'scraping',
+    color: 'blue'
+  },
+  {
+    id: '2',
+    label: 'Enrichissement',
+    description: 'Ajout email, tél, données entreprise',
+    metric: '95% enrichis',
+    icon: 'enrichment',
+    color: 'purple'
+  },
+  {
+    id: '3',
+    label: 'Filtre ICP',
+    description: 'Scoring et qualification automatique',
+    metric: '70% qualifiés',
+    icon: 'filter',
+    color: 'indigo'
+  },
+  {
+    id: '4',
+    label: 'Campagne Email',
+    description: 'Séquences personnalisées par IA',
+    metric: '8% réponse',
+    icon: 'email',
+    color: 'blue'
+  },
+  {
+    id: '5',
+    label: 'Campagne LinkedIn',
+    description: 'Messages automatisés sécurisés',
+    metric: '12% réponse',
+    icon: 'linkedin',
+    color: 'indigo'
+  },
+  {
+    id: '6',
+    label: 'Pipeline RDV',
+    description: 'Prospects intéressés → calendrier',
+    metric: '15+ RDV/mois',
+    icon: 'meeting',
+    color: 'green'
+  },
 ];
 
 export default function WorkflowDiagram() {
+  const [hoveredNode, setHoveredNode] = useState<string | null>(null);
+
   const getNodeColor = (color: string) => {
     const colors = {
       blue: 'from-blue-500 to-blue-600',
       purple: 'from-purple-500 to-purple-600',
       indigo: 'from-indigo-500 to-indigo-600',
       green: 'from-green-500 to-emerald-600',
+    };
+    return colors[color as keyof typeof colors] || colors.blue;
+  };
+
+  const getNodeBorderColor = (color: string) => {
+    const colors = {
+      blue: 'border-blue-200',
+      purple: 'border-purple-200',
+      indigo: 'border-indigo-200',
+      green: 'border-green-200',
     };
     return colors[color as keyof typeof colors] || colors.blue;
   };
@@ -84,7 +132,7 @@ export default function WorkflowDiagram() {
 
   return (
     <div className="w-full overflow-x-auto">
-      <div className="min-w-[800px] p-8">
+      <div className="min-w-[1000px] p-8">
         {/* Desktop Layout */}
         <div className="hidden md:block relative">
           {/* SVG for connections */}
@@ -93,131 +141,141 @@ export default function WorkflowDiagram() {
               <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
                 <polygon points="0 0, 10 3, 0 6" fill="#9CA3AF" />
               </marker>
+              {/* Animated gradient for connections */}
+              <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.3">
+                  <animate attributeName="stop-opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite" />
+                </stop>
+                <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.8">
+                  <animate attributeName="stop-opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite" />
+                </stop>
+              </linearGradient>
             </defs>
-            {/* Connection lines */}
-            <path d="M 160 60 Q 200 60 240 60" stroke="#D1D5DB" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
-            <path d="M 360 60 Q 400 60 440 60" stroke="#D1D5DB" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
-            <path d="M 560 60 Q 600 60 640 60" stroke="#D1D5DB" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
-            <path d="M 560 60 Q 600 120 640 160" stroke="#D1D5DB" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
-            <path d="M 760 60 Q 800 60 840 100" stroke="#D1D5DB" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
-            <path d="M 760 160 Q 800 140 840 120" stroke="#D1D5DB" strokeWidth="2" fill="none" markerEnd="url(#arrowhead)" />
+            {/* Connection lines with glow effect */}
+            <g>
+              <path d="M 180 80 Q 220 80 260 80" stroke="url(#connectionGradient)" strokeWidth="3" fill="none" markerEnd="url(#arrowhead)" opacity="0.6" />
+              <path d="M 380 80 Q 420 80 460 80" stroke="url(#connectionGradient)" strokeWidth="3" fill="none" markerEnd="url(#arrowhead)" opacity="0.6" />
+              <path d="M 580 80 Q 620 80 660 80" stroke="url(#connectionGradient)" strokeWidth="3" fill="none" markerEnd="url(#arrowhead)" opacity="0.6" />
+              <path d="M 580 80 Q 620 140 660 180" stroke="url(#connectionGradient)" strokeWidth="3" fill="none" markerEnd="url(#arrowhead)" opacity="0.6" />
+              <path d="M 780 80 Q 820 80 860 120" stroke="url(#connectionGradient)" strokeWidth="3" fill="none" markerEnd="url(#arrowhead)" opacity="0.6" />
+              <path d="M 780 180 Q 820 160 860 140" stroke="url(#connectionGradient)" strokeWidth="3" fill="none" markerEnd="url(#arrowhead)" opacity="0.6" />
+            </g>
           </svg>
 
           {/* Nodes */}
-          <div className="relative grid grid-cols-4 gap-x-32 gap-y-16" style={{ zIndex: 1 }}>
+          <div className="relative grid grid-cols-4 gap-x-32 gap-y-20" style={{ zIndex: 1 }}>
             {/* Row 1 */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0 }}
-              className="col-span-1"
-            >
-              <div className={`bg-gradient-to-br ${getNodeColor('blue')} text-white rounded-xl p-4 shadow-lg border-2 border-white`}>
-                <div className="flex items-center gap-3">
-                  {getIcon('scraping')}
-                  <span className="font-semibold text-sm">Scraping Sales Nav</span>
-                </div>
-              </div>
-            </motion.div>
+            {nodes.slice(0, 4).map((node, i) => (
+              <motion.div
+                key={node.id}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.15 }}
+                onMouseEnter={() => setHoveredNode(node.id)}
+                onMouseLeave={() => setHoveredNode(null)}
+                className="col-span-1"
+              >
+                <div className={`bg-gradient-to-br ${getNodeColor(node.color)} text-white rounded-xl p-5 shadow-lg border-3 ${getNodeBorderColor(node.color)} relative overflow-hidden transform transition-all duration-300 ${hoveredNode === node.id ? 'scale-105 shadow-2xl' : ''}`}>
+                  {/* Animated background gradient */}
+                  <motion.div
+                    animate={{
+                      opacity: hoveredNode === node.id ? 0.3 : 0,
+                    }}
+                    className="absolute inset-0 bg-white"
+                  />
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="col-span-1"
-            >
-              <div className={`bg-gradient-to-br ${getNodeColor('purple')} text-white rounded-xl p-4 shadow-lg border-2 border-white`}>
-                <div className="flex items-center gap-3">
-                  {getIcon('enrichment')}
-                  <span className="font-semibold text-sm">Enrichissement</span>
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-3 mb-3">
+                      {getIcon(node.icon)}
+                      <span className="font-bold text-base">{node.label}</span>
+                    </div>
+                    <p className="text-xs text-white/90 mb-2">{node.description}</p>
+                    {node.metric && (
+                      <div className="mt-3 pt-3 border-t border-white/20">
+                        <span className="text-sm font-bold">{node.metric}</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.4 }}
-              className="col-span-1"
-            >
-              <div className={`bg-gradient-to-br ${getNodeColor('indigo')} text-white rounded-xl p-4 shadow-lg border-2 border-white`}>
-                <div className="flex items-center gap-3">
-                  {getIcon('filter')}
-                  <span className="font-semibold text-sm">Filtre ICP</span>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6 }}
-              className="col-span-1"
-            >
-              <div className={`bg-gradient-to-br ${getNodeColor('blue')} text-white rounded-xl p-4 shadow-lg border-2 border-white`}>
-                <div className="flex items-center gap-3">
-                  {getIcon('email')}
-                  <span className="font-semibold text-sm">Campagne Email</span>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            ))}
 
             {/* Row 2 - Offset for branching */}
             <div className="col-span-2"></div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.8 }}
-              className="col-span-1"
-            >
-              <div className={`bg-gradient-to-br ${getNodeColor('indigo')} text-white rounded-xl p-4 shadow-lg border-2 border-white`}>
-                <div className="flex items-center gap-3">
-                  {getIcon('linkedin')}
-                  <span className="font-semibold text-sm">LinkedIn</span>
-                </div>
-              </div>
-            </motion.div>
+            {nodes.slice(4).map((node, i) => (
+              <motion.div
+                key={node.id}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: (i + 4) * 0.15 }}
+                onMouseEnter={() => setHoveredNode(node.id)}
+                onMouseLeave={() => setHoveredNode(null)}
+                className="col-span-1"
+              >
+                <div className={`bg-gradient-to-br ${getNodeColor(node.color)} text-white rounded-xl p-5 shadow-lg border-3 ${getNodeBorderColor(node.color)} relative overflow-hidden transform transition-all duration-300 ${hoveredNode === node.id ? 'scale-105 shadow-2xl' : ''}`}>
+                  {node.id === '6' && (
+                    <motion.div
+                      animate={{ opacity: [0.4, 0.8, 0.4] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="absolute -inset-1 bg-green-400 rounded-xl blur-md"
+                      style={{ zIndex: -1 }}
+                    />
+                  )}
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1 }}
-              className="col-span-1"
-            >
-              <div className={`bg-gradient-to-br ${getNodeColor('green')} text-white rounded-xl p-4 shadow-lg border-2 border-white relative`}>
-                <motion.div
-                  animate={{ opacity: [1, 0.5, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute -inset-1 bg-green-400 rounded-xl blur-sm"
-                  style={{ zIndex: -1 }}
-                />
-                <div className="flex items-center gap-3 relative z-10">
-                  {getIcon('meeting')}
-                  <span className="font-semibold text-sm">Pipeline RDV</span>
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-3 mb-3">
+                      {getIcon(node.icon)}
+                      <span className="font-bold text-base">{node.label}</span>
+                    </div>
+                    <p className="text-xs text-white/90 mb-2">{node.description}</p>
+                    {node.metric && (
+                      <div className="mt-3 pt-3 border-t border-white/20">
+                        <span className="text-sm font-bold">{node.metric}</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            ))}
           </div>
         </div>
 
         {/* Mobile Layout - Vertical */}
-        <div className="md:hidden space-y-4">
+        <div className="md:hidden space-y-6">
           {nodes.map((node, i) => (
-            <motion.div key={node.id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }}>
-              <div className={`bg-gradient-to-br ${getNodeColor(node.color)} text-white rounded-xl p-4 shadow-lg`}>
-                <div className="flex items-center gap-3">
-                  {getIcon(node.icon)}
-                  <span className="font-semibold">{node.label}</span>
+            <div key={node.id}>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <div className={`bg-gradient-to-br ${getNodeColor(node.color)} text-white rounded-xl p-5 shadow-lg`}>
+                  <div className="flex items-center gap-3 mb-3">
+                    {getIcon(node.icon)}
+                    <span className="font-bold text-base">{node.label}</span>
+                  </div>
+                  <p className="text-xs text-white/90 mb-2">{node.description}</p>
+                  {node.metric && (
+                    <div className="mt-3 pt-3 border-t border-white/20">
+                      <span className="text-sm font-bold">{node.metric}</span>
+                    </div>
+                  )}
                 </div>
-              </div>
+              </motion.div>
               {i < nodes.length - 1 && (
-                <div className="flex justify-center py-2">
-                  <svg className="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                <div className="flex justify-center py-3">
+                  <motion.svg
+                    animate={{ y: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="w-6 h-6 text-gray-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
                     <path fillRule="evenodd" d="M10 3a1 1 0 011 1v10.586l2.293-2.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V4a1 1 0 011-1z" clipRule="evenodd" />
-                  </svg>
+                  </motion.svg>
                 </div>
               )}
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
