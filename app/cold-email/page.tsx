@@ -3,394 +3,234 @@
 import { motion } from 'framer-motion';
 import Button from '@/components/ui/Button';
 import Section from '@/components/ui/Section';
-import Card from '@/components/ui/Card';
-import Badge from '@/components/ui/Badge';
-import FeatureGrid from '@/components/business/FeatureGrid';
-import StatsGrid from '@/components/business/StatsGrid';
-import CTA from '@/components/business/CTA';
-import {
-  EmailIcon,
-  TargetIcon,
-  BrainIcon,
-  ChartIcon,
-  MessageIcon,
-  CheckCircleIcon,
-  RefreshIcon,
-  TrendingUpIcon,
-} from '@/components/ui/Icons';
+import EmailCampaignMockup from '@/components/mockups/EmailCampaignMockup';
+import AnalyticsDashboardMockup from '@/components/mockups/AnalyticsDashboardMockup';
 
 export default function ColdEmailPage() {
-  const stats = [
-    { number: '4000', suffix: '+', label: 'Emails envoyés / mois', icon: <EmailIcon size={24} /> },
-    { number: '45', suffix: '%', label: 'Taux d\'ouverture moyen', icon: <ChartIcon size={24} /> },
-    { number: '8', suffix: '%', label: 'Taux de réponse moyen', icon: <MessageIcon size={24} /> },
-    { number: '98', suffix: '%', label: 'Délivrabilité', icon: <CheckCircleIcon size={24} /> },
-  ];
-
-  const features = [
-    {
-      icon: <TargetIcon />,
-      title: 'Ciblage ultra-précis',
-      description: 'Bases de données vérifiées, enrichissement multi-sources et segmentation avancée pour ne contacter que vos ICP.',
-    },
-    {
-      icon: <BrainIcon />,
-      title: 'Personnalisation IA',
-      description: 'Notre IA analyse site web, LinkedIn, actualités et secteur pour rédiger des emails 100% personnalisés.',
-    },
-    {
-      icon: <ChartIcon />,
-      title: 'A/B Testing systématique',
-      description: 'Test permanent des objets, accroches, CTA et timings pour optimiser chaque élément de vos campagnes.',
-    },
-    {
-      icon: <CheckCircleIcon />,
-      title: 'Délivrabilité maximale',
-      description: 'Infrastructure dédiée, warm-up progressif, domaines multiples et monitoring SPF/DKIM/DMARC.',
-    },
-    {
-      icon: <RefreshIcon />,
-      title: 'Séquences intelligentes',
-      description: 'Follow-ups automatisés et personnalisés avec logique conditionnelle basée sur les comportements.',
-    },
-    {
-      icon: <TrendingUpIcon />,
-      title: 'Scale sans compromis',
-      description: 'Montée en volume progressive tout en maintenant qualité, personnalisation et taux de réponse élevés.',
-    },
-  ];
-
   return (
     <>
       {/* Hero */}
-      <Section className="pt-20" background="white">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <Badge variant="primary" className="mb-6">
-              Cold Email B2B
-            </Badge>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Cold Email B2B : 4 000+ emails personnalisés par mois
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Scalead maîtrise l'art du cold email à grande échelle. Découvrez comment nous combinons volumes massifs,
-              personnalisation IA et délivrabilité optimale pour générer des leads qualifiés via l'emailing B2B.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button href="/audit-gratuit" variant="primary" size="lg">
-                Audit Gratuit
-              </Button>
-              <Button href="/methodologie" variant="outline" size="lg">
-                Notre Méthode
-              </Button>
-            </div>
-          </motion.div>
+      <Section className="pt-24 pb-12" background="white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+              <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                Cold Email B2B
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                Cold Email B2B : <span className="bg-gradient-to-r from-blue-600 to-primary-600 bg-clip-text text-transparent">4 000+ emails personnalisés</span> par mois
+              </h1>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                Scalead maîtrise l'art du cold email à grande échelle. Volumes massifs, personnalisation IA et délivrabilité optimale pour générer des leads qualifiés.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button href="/audit-gratuit" variant="primary" size="lg">Audit Gratuit</Button>
+                <Button href="/methodologie" variant="outline" size="lg">Notre Méthode</Button>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </Section>
 
       {/* Stats */}
-      <Section background="gray">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Les chiffres du cold email avec Scalead
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Des performances qui parlent d'elles-mêmes grâce à notre approche unique du cold emailing B2B.
-          </p>
-        </motion.div>
-        <StatsGrid stats={stats} />
-      </Section>
-
-      {/* What is Cold Email */}
-      <Section background="white">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Qu'est-ce que le cold email B2B ?
-            </h2>
-            <div className="prose prose-lg max-w-none text-gray-700 space-y-4">
-              <p>
-                Le <strong>cold email</strong> (ou email froid) est une technique de prospection commerciale B2B qui consiste
-                à envoyer des emails personnalisés à des prospects qui ne vous connaissent pas encore. Contrairement au spam,
-                un bon cold email est <strong>ciblé</strong>, <strong>personnalisé</strong> et apporte une <strong>valeur réelle</strong> au destinataire.
-              </p>
-              <p>
-                Le cold email est aujourd'hui l'un des canaux les plus efficaces pour la <strong>génération de leads B2B</strong> car :
-              </p>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>
-                  <strong>Scalabilité</strong> : vous pouvez contacter des milliers de prospects qualifiés chaque mois
-                </li>
-                <li>
-                  <strong>Coût maîtrisé</strong> : ROI bien supérieur aux autres canaux d'acquisition B2B
-                </li>
-                <li>
-                  <strong>Mesurabilité</strong> : tracking précis de chaque métrique (ouvertures, clics, réponses)
-                </li>
-                <li>
-                  <strong>Personnalisation</strong> : messages adaptés à chaque prospect grâce à l'IA
-                </li>
-                <li>
-                  <strong>Contrôle total</strong> : vous maîtrisez le message, le timing et le ciblage
-                </li>
-              </ul>
-              <p>
-                Cependant, réussir en cold email demande une <strong>expertise technique</strong> (délivrabilité, infrastructure),
-                une <strong>maîtrise du copywriting</strong> et une <strong>approche data-driven</strong> pour optimiser en continu.
-                C'est précisément ce que Scalead apporte à ses clients.
-              </p>
-            </div>
-          </motion.div>
+      <Section background="white" className="py-12">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {[
+              { value: '4000+', label: 'Emails / mois' },
+              { value: '45%', label: 'Taux d\'ouverture' },
+              { value: '8%', label: 'Taux de réponse' },
+              { value: '98%', label: 'Délivrabilité' },
+            ].map((stat, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                <div className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-1">{stat.value}</div>
+                  <div className="text-sm text-gray-600">{stat.label}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </Section>
 
-      {/* Features */}
-      <Section background="gray">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Notre approche du cold email B2B
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ce qui fait la différence entre un email qui finit en spam et un email qui génère des RDV.
-          </p>
-        </motion.div>
-        <FeatureGrid features={features} />
-      </Section>
-
-      {/* Methodology */}
-      <Section background="white">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-              Comment nous envoyons 4 000 emails / mois en gardant la qualité
-            </h2>
-            <div className="space-y-6">
-              {[
-                {
-                  title: '1. Ciblage et enrichissement',
-                  description: 'Nous identifions vos ICP (Ideal Customer Profile) puis utilisons des outils premium pour construire des listes ultra-qualifiées. Chaque email est vérifié (syntax, MX, SMTP) pour garantir la délivrabilité.',
-                },
-                {
-                  title: '2. Infrastructure dédiée',
-                  description: 'Domaines secondaires dédiés, warm-up progressif sur 3-4 semaines, configuration SPF/DKIM/DMARC parfaite. Nous utilisons plusieurs domaines en rotation pour maintenir une réputation IP excellente.',
-                },
-                {
-                  title: '3. Copywriting testé',
-                  description: 'Nos copies sont conçues pour maximiser les réponses, pas les ouvertures. Structure PAS (Problem-Agitate-Solve), objets courts et intrigants, CTA clairs. Chaque élément est A/B testé.',
-                },
-                {
-                  title: '4. Personnalisation IA',
-                  description: 'Notre IA analyse automatiquement chaque prospect (site web, LinkedIn, actualités, secteur) pour insérer des variables de personnalisation pertinentes dans chaque email. Résultat : 0 email identique.',
-                },
-                {
-                  title: '5. Séquences multi-touch',
-                  description: 'Un prospect reçoit 4-7 emails espacés de 3-5 jours. Chaque follow-up apporte une nouvelle valeur et un nouvel angle. Les séquences sont conditionnelles (si ouverture sans réponse, si clic, etc.).',
-                },
-                {
-                  title: '6. Monitoring et optimisation',
-                  description: 'Suivi quotidien de la délivrabilité, des taux d\'ouverture et de réponse. A/B testing permanent sur tous les éléments. Ajustement hebdomadaire basé sur la data.',
-                },
-              ].map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Card hover>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
-                    <p className="text-gray-700">{step.description}</p>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </Section>
-
-      {/* Comparison */}
-      <Section background="gray">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
-              Cold email : en interne vs avec Scalead
-            </h2>
-            <Card>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b-2 border-gray-200">
-                      <th className="text-left py-4 px-4"></th>
-                      <th className="text-center py-4 px-4 font-semibold text-gray-900">En interne</th>
-                      <th className="text-center py-4 px-4 font-semibold text-primary-600 bg-primary-50">Avec Scalead</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      { feature: 'Temps de mise en place', internal: '2-3 mois', scalead: '< 2 semaines' },
-                      { feature: 'Coût mensuel', internal: '3-5k€ (SDR + outils)', scalead: 'Sur mesure' },
-                      { feature: 'Volume / mois', internal: '500-1000 emails', scalead: '4 000+ emails' },
-                      { feature: 'Personnalisation', internal: 'Manuelle (limitée)', scalead: 'IA (100%)' },
-                      { feature: 'Délivrabilité', internal: '60-80%', scalead: '95-98%' },
-                      { feature: 'Taux d\'ouverture', internal: '20-35%', scalead: '40-50%' },
-                      { feature: 'Taux de réponse', internal: '2-4%', scalead: '6-10%' },
-                      { feature: 'A/B Testing', internal: 'Occasionnel', scalead: 'Permanent' },
-                      { feature: 'Optimisation', internal: 'Mensuelle', scalead: 'Quotidienne' },
-                      { feature: 'Expertise requise', internal: 'Forte', scalead: 'Aucune' },
-                    ].map((row, index) => (
-                      <tr key={index} className="border-b border-gray-100">
-                        <td className="py-4 px-4 font-medium text-gray-900">{row.feature}</td>
-                        <td className="py-4 px-4 text-center text-gray-700">{row.internal}</td>
-                        <td className="py-4 px-4 text-center text-primary-700 bg-primary-50 font-semibold">{row.scalead}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+      {/* Main Feature with Mockup */}
+      <Section background="white" className="py-12">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl overflow-hidden shadow-sm">
+            <div className="p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="inline-block p-2 bg-blue-100 rounded-xl mb-4">
+                  <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                  </svg>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Personnalisation IA à grande échelle</h2>
+                <p className="text-gray-600 mb-6">Chaque email est unique grâce à notre IA qui analyse le site web, le profil LinkedIn, les actualités récentes et le secteur d'activité de chaque prospect.</p>
+                <ul className="space-y-3">
+                  {[
+                    'Variables personnalisées automatiques',
+                    'Analyse contextuelle de chaque prospect',
+                    'Copies optimisées pour la conversion',
+                    'A/B testing permanent sur tous les éléments',
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3">
+                      <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-gray-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </Card>
-          </motion.div>
+              <div className="scale-95">
+                <EmailCampaignMockup />
+              </div>
+            </div>
+          </div>
         </div>
       </Section>
 
-      {/* Best Practices */}
-      <Section background="white">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-              Les règles d'or du cold email en 2024
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                {
-                  title: '✅ À faire',
-                  items: [
-                    'Personnaliser chaque email (nom, entreprise, contexte)',
-                    'Garder l\'email court (< 150 mots)',
-                    'Un seul CTA clair par email',
-                    'Warm-up de vos domaines (3-4 semaines)',
-                    'Espacer les envois (max 40-50/jour/domaine)',
-                    'Segmenter vos listes par ICP',
-                    'A/B tester systématiquement',
-                    'Monitorer votre réputation (sender score)',
-                  ],
-                },
-                {
-                  title: '❌ À éviter',
-                  items: [
-                    'Acheter des listes d\'emails non opt-in',
-                    'Envoyer depuis votre domaine principal',
-                    'Utiliser des mots spam (gratuit, argent, etc.)',
-                    'Envoyer des pièces jointes',
-                    'Faire du mass mailing non personnalisé',
-                    'Ignorer les demandes de désinscription',
-                    'Utiliser un seul domaine pour tout',
-                    'Négliger la délivrabilité technique',
-                  ],
-                },
-              ].map((section, index) => (
-                <Card key={index} className={index === 0 ? 'border-2 border-green-200 bg-green-50' : 'border-2 border-red-200 bg-red-50'}>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">{section.title}</h3>
-                  <ul className="space-y-2">
-                    {section.items.map((item, i) => (
-                      <li key={i} className="text-gray-700 text-sm">{item}</li>
-                    ))}
-                  </ul>
-                </Card>
-              ))}
-            </div>
-          </motion.div>
+      {/* Features Grid */}
+      <Section background="white" className="py-12">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Notre approche du cold email B2B</h2>
+            <p className="text-lg text-gray-600">Ce qui fait la différence entre un email qui finit en spam et un email qui génère des RDV</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: 'Ciblage ultra-précis',
+                description: 'Bases de données vérifiées, enrichissement multi-sources et segmentation avancée pour ne contacter que vos ICP.',
+                color: 'blue',
+              },
+              {
+                title: 'Personnalisation IA',
+                description: 'Notre IA analyse site web, LinkedIn, actualités et secteur pour rédiger des emails 100% personnalisés.',
+                color: 'purple',
+              },
+              {
+                title: 'A/B Testing systématique',
+                description: 'Test permanent des objets, accroches, CTA et timings pour optimiser chaque élément de vos campagnes.',
+                color: 'green',
+              },
+              {
+                title: 'Délivrabilité maximale',
+                description: 'Infrastructure dédiée, warm-up progressif, domaines multiples et monitoring SPF/DKIM/DMARC.',
+                color: 'orange',
+              },
+              {
+                title: 'Séquences intelligentes',
+                description: 'Follow-ups automatisés et personnalisés avec logique conditionnelle basée sur les comportements.',
+                color: 'indigo',
+              },
+              {
+                title: 'Scale sans compromis',
+                description: 'Montée en volume progressive tout en maintenant qualité, personnalisation et taux de réponse élevés.',
+                color: 'emerald',
+              },
+            ].map((feature, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-all h-full">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600 text-sm">{feature.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </Section>
 
-      {/* FAQ */}
-      <Section background="gray">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
-              Questions fréquentes sur le cold email
-            </h2>
-            <div className="space-y-4">
-              {[
-                {
-                  q: 'Le cold email est-il légal en France ?',
-                  a: 'Oui, le cold email B2B est légal en France dans le cadre du RGPD, à condition de respecter certaines règles : cibler des professionnels, permettre la désinscription facilement, ne pas acheter de bases illégales. Chez Scalead, nous sommes 100% conformes RGPD.',
-                },
-                {
-                  q: 'Quel taux de réponse puis-je espérer ?',
-                  a: 'Un bon taux de réponse en cold email B2B se situe entre 5% et 10%. Chez Scalead, nous visons 8% en moyenne grâce à notre personnalisation IA et notre ciblage ultra-précis. Ce taux peut monter à 12-15% sur des marchés de niche.',
-                },
-                {
-                  q: 'Comment éviter de finir en spam ?',
-                  a: 'La délivrabilité repose sur 3 piliers : infrastructure technique (SPF/DKIM/DMARC), réputation (warm-up, volumes progressifs) et contenu (éviter les mots spam, bon ratio texte/lien). Scalead gère tout cela pour vous avec un taux de délivrabilité de 98%.',
-                },
-                {
-                  q: 'Combien de temps avant les premiers résultats ?',
-                  a: 'Les premières réponses arrivent dès la 1ère semaine de campagne. Il faut compter 3-4 semaines pour avoir suffisamment de data et optimiser. À partir de 2 mois, les résultats se stabilisent et deviennent prévisibles.',
-                },
-                {
-                  q: 'Quelle est la différence entre cold email et spam ?',
-                  a: 'Le spam est un envoi massif non ciblé et non personnalisé. Le cold email est une approche ciblée, personnalisée et apportant de la valeur au destinataire. Chez Scalead, chaque email est unique et pertinent pour le prospect.',
-                },
-              ].map((item, index) => (
-                <Card key={index} hover>
-                  <h3 className="font-bold text-gray-900 mb-3">{item.q}</h3>
-                  <p className="text-gray-700">{item.a}</p>
-                </Card>
-              ))}
+      {/* Analytics Mockup */}
+      <Section background="white" className="py-12">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl overflow-hidden shadow-sm">
+            <div className="p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center">
+              <div className="scale-95">
+                <AnalyticsDashboardMockup />
+              </div>
+              <div>
+                <div className="inline-block p-2 bg-gray-100 rounded-xl mb-4">
+                  <svg className="w-6 h-6 text-gray-700" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+                  </svg>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Suivi et optimisation en temps réel</h2>
+                <p className="text-gray-600 mb-6">Dashboard complet pour suivre toutes vos métriques : taux d'ouverture, clics, réponses, RDV générés. Optimisation continue basée sur la data.</p>
+                <ul className="space-y-3">
+                  {[
+                    'Monitoring en temps réel de toutes les campagnes',
+                    'A/B testing automatique sur tous les éléments',
+                    'Rapports détaillés et insights actionnables',
+                    'Optimisation quotidienne des performances',
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3">
+                      <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-gray-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </motion.div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Comparison Table - Compact */}
+      <Section background="white" className="py-12">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Cold email : en interne vs avec Scalead</h2>
+          </div>
+          <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="text-left py-4 px-6 text-sm font-semibold text-gray-900"></th>
+                    <th className="text-center py-4 px-6 text-sm font-semibold text-gray-600">En interne</th>
+                    <th className="text-center py-4 px-6 text-sm font-semibold text-blue-600 bg-blue-50">Avec Scalead</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {[
+                    { feature: 'Volume / mois', internal: '500-1000', scalead: '4 000+' },
+                    { feature: 'Taux d\'ouverture', internal: '20-35%', scalead: '40-50%' },
+                    { feature: 'Taux de réponse', internal: '2-4%', scalead: '6-10%' },
+                    { feature: 'Personnalisation', internal: 'Manuelle', scalead: '100% IA' },
+                    { feature: 'Délivrabilité', internal: '60-80%', scalead: '95-98%' },
+                    { feature: 'Délai de mise en place', internal: '2-3 mois', scalead: '< 2 semaines' },
+                  ].map((row, i) => (
+                    <tr key={i} className="hover:bg-gray-50">
+                      <td className="py-3 px-6 text-sm font-medium text-gray-900">{row.feature}</td>
+                      <td className="py-3 px-6 text-center text-sm text-gray-600">{row.internal}</td>
+                      <td className="py-3 px-6 text-center text-sm font-semibold text-blue-600 bg-blue-50">{row.scalead}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </Section>
 
       {/* CTA */}
-      <Section background="white">
-        <CTA
-          variant="gradient"
-          title="Prêt à lancer vos campagnes de cold email ?"
-          description="Obtenez un audit gratuit de votre approche actuelle et découvrez comment générer des leads qualifiés via le cold email B2B."
-          primaryButton={{
-            text: 'Audit Gratuit',
-            href: '/audit-gratuit',
-          }}
-          secondaryButton={{
-            text: 'Voir des Cas Clients',
-            href: '/cas-clients',
-          }}
-        />
+      <Section background="white" className="py-12">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="bg-gradient-to-br from-blue-600 to-primary-700 rounded-2xl p-10 text-center shadow-lg">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Prêt à lancer vos campagnes de cold email ?</h2>
+            <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">Obtenez un audit gratuit de votre approche actuelle et découvrez comment générer des leads qualifiés via le cold email B2B.</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="/audit-gratuit" variant="primary" size="lg" className="bg-white text-blue-600 hover:bg-gray-50">Audit Gratuit</Button>
+              <Button href="/cas-clients" variant="outline" size="lg" className="border-white text-white hover:bg-white/10">Voir des Cas Clients</Button>
+            </div>
+          </div>
+        </div>
       </Section>
     </>
   );
