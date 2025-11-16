@@ -45,7 +45,7 @@ export default function TarifsPage() {
               <h3 className="text-xl font-bold text-primary-600 mb-4">🚀 Scalead</h3>
               <div className="space-y-3 text-gray-700">
                 <p>Coût : Sur mesure</p>
-                <p>Setup : < 2 semaines</p>
+                <p>Setup : {'<'} 2 semaines</p>
                 <p>Outils : Inclus</p>
                 <p>Expertise : Incluse</p>
                 <p>Scaling : Illimité</p>
