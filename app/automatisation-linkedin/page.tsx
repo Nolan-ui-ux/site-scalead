@@ -8,43 +8,53 @@ import Badge from '@/components/ui/Badge';
 import FeatureGrid from '@/components/business/FeatureGrid';
 import StatsGrid from '@/components/business/StatsGrid';
 import CTA from '@/components/business/CTA';
+import {
+  UsersIcon,
+  CheckCircleIcon,
+  MessageIcon,
+  BrainIcon,
+  TargetIcon,
+  ChartIcon,
+  LightningIcon,
+  TrendingUpIcon,
+} from '@/components/ui/Icons';
 
 export default function AutomatisationLinkedInPage() {
   const stats = [
-    { number: '1000', suffix: '+', label: 'Invitations / mois', icon: '👥' },
-    { number: '35', suffix: '%', label: 'Taux d\'acceptation', icon: '✅' },
-    { number: '12', suffix: '%', label: 'Taux de réponse', icon: '💬' },
-    { number: '100', suffix: '%', label: 'Personnalisation IA', icon: '🤖' },
+    { number: '1000', suffix: '+', label: 'Invitations / mois', icon: <UsersIcon size={24} /> },
+    { number: '35', suffix: '%', label: 'Taux d\'acceptation', icon: <CheckCircleIcon size={24} /> },
+    { number: '12', suffix: '%', label: 'Taux de réponse', icon: <MessageIcon size={24} /> },
+    { number: '100', suffix: '%', label: 'Personnalisation IA', icon: <BrainIcon size={24} /> },
   ];
 
   const features = [
     {
-      icon: '🎯',
+      icon: <TargetIcon />,
       title: 'Ciblage précis',
       description: 'Identification des bons décideurs grâce au Sales Navigator et à nos filtres avancés (poste, entreprise, secteur, localisation).',
     },
     {
-      icon: '🤖',
+      icon: <BrainIcon />,
       title: 'Messages personnalisés IA',
       description: 'Chaque message est unique, rédigé par notre IA qui analyse le profil, les posts récents et l\'activité LinkedIn du prospect.',
     },
     {
-      icon: '🔒',
+      icon: <CheckCircleIcon />,
       title: 'Sécurité maximale',
       description: 'Respect strict des limites LinkedIn, actions humanisées avec randomisation, gestion des fuseaux horaires.',
     },
     {
-      icon: '📊',
+      icon: <ChartIcon />,
       title: 'Multi-touch intelligent',
       description: 'Séquences automatisées : invitation → message de connexion → follow-ups → content engagement.',
     },
     {
-      icon: '⚡',
+      icon: <LightningIcon />,
       title: 'Synchronisation multicanale',
       description: 'Orchestration parfaite entre LinkedIn et email pour maximiser vos chances de toucher le prospect.',
     },
     {
-      icon: '📈',
+      icon: <TrendingUpIcon />,
       title: 'Reporting détaillé',
       description: 'Dashboard temps réel avec toutes vos métriques LinkedIn : invitations, acceptations, messages, réponses.',
     },
