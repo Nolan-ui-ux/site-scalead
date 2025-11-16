@@ -1,0 +1,8 @@
+<svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Carré bleu avec S -->
+  <rect width="40" height="40" y="5" rx="8" fill="#1877F2"/>
+  <text x="20" y="35" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">S</text>
+
+  <!-- Texte Scalead -->
+  <text x="50" y="35" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#111827">Scalead</text>
+</svg>
