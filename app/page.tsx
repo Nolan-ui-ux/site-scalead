@@ -9,6 +9,10 @@ import AIPersonalizationMockup from '@/components/mockups/AIPersonalizationMocku
 import AnalyticsDashboardMockup from '@/components/mockups/AnalyticsDashboardMockup';
 import TargetingMockup from '@/components/mockups/TargetingMockup';
 import MultichannelFlowMockup from '@/components/mockups/MultichannelFlowMockup';
+import SalesNavScrapingMockup from '@/components/mockups/SalesNavScrapingMockup';
+import GoogleMapsScrapingMockup from '@/components/mockups/GoogleMapsScrapingMockup';
+import TechScrapingMockup from '@/components/mockups/TechScrapingMockup';
+import WorkflowDiagram from '@/components/business/WorkflowDiagram';
 
 export default function HomePage() {
   return (
@@ -244,6 +248,130 @@ export default function HomePage() {
               </div>
             </motion.div>
           </div>
+        </div>
+      </Section>
+
+      {/* Scraping & Enrichissement Section */}
+      <Section background="#F5F7FB" className="py-16">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Scraping & bases de prospection prêtes à l'emploi
+            </h2>
+            <p className="text-lg text-gray-600">
+              LinkedIn Sales Navigator, Google Maps, technologies web... Nous scrapons et enrichissons vos bases pour vous.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Sales Navigator Scraping */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="bg-white rounded-2xl overflow-hidden shadow-lg h-full">
+                <div className="p-6 border-b border-gray-100">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-[#0A66C2] rounded-lg flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">in</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900">Sales Navigator</h3>
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Extraction massive de prospects qualifiés depuis LinkedIn avec filtres avancés et enrichissement automatique.
+                  </p>
+                </div>
+                <div className="p-4 bg-gray-50">
+                  <div className="scale-95 origin-top">
+                    <SalesNavScrapingMockup />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Google Maps Scraping */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <div className="bg-white rounded-2xl overflow-hidden shadow-lg h-full">
+                <div className="p-6 border-b border-gray-100">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900">Google Maps</h3>
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Scraping local pour cibler artisans, commerces, professions libérales avec coordonnées complètes.
+                  </p>
+                </div>
+                <div className="p-4 bg-gray-50">
+                  <div className="scale-95 origin-top">
+                    <GoogleMapsScrapingMockup />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Tech Stack Scraping */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <div className="bg-white rounded-2xl overflow-hidden shadow-lg h-full">
+                <div className="p-6 border-b border-gray-100">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center">
+                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900">Tech Stack</h3>
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Détection des technologies utilisées (Shopify, WordPress...) pour cibler précisément vos ICP.
+                  </p>
+                </div>
+                <div className="p-4 bg-gray-50">
+                  <div className="scale-95 origin-top">
+                    <TechScrapingMockup />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Workflow Diagram Section */}
+      <Section background="white" className="py-16">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Workflow multicanal automatisé de bout en bout
+            </h2>
+            <p className="text-lg text-gray-600">
+              De la collecte de données jusqu'aux rendez-vous qualifiés, tout est automatisé et orchestré.
+            </p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 shadow-sm">
+              <WorkflowDiagram />
+            </div>
+          </motion.div>
         </div>
       </Section>
 
