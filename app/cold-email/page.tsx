@@ -8,43 +8,53 @@ import Badge from '@/components/ui/Badge';
 import FeatureGrid from '@/components/business/FeatureGrid';
 import StatsGrid from '@/components/business/StatsGrid';
 import CTA from '@/components/business/CTA';
+import {
+  EmailIcon,
+  TargetIcon,
+  BrainIcon,
+  ChartIcon,
+  MessageIcon,
+  CheckCircleIcon,
+  RefreshIcon,
+  TrendingUpIcon,
+} from '@/components/ui/Icons';
 
 export default function ColdEmailPage() {
   const stats = [
-    { number: '4000', suffix: '+', label: 'Emails envoyés / mois', icon: '📧' },
-    { number: '45', suffix: '%', label: 'Taux d\'ouverture moyen', icon: '👀' },
-    { number: '8', suffix: '%', label: 'Taux de réponse moyen', icon: '💬' },
-    { number: '98', suffix: '%', label: 'Délivrabilité', icon: '✅' },
+    { number: '4000', suffix: '+', label: 'Emails envoyés / mois', icon: <EmailIcon size={24} /> },
+    { number: '45', suffix: '%', label: 'Taux d\'ouverture moyen', icon: <ChartIcon size={24} /> },
+    { number: '8', suffix: '%', label: 'Taux de réponse moyen', icon: <MessageIcon size={24} /> },
+    { number: '98', suffix: '%', label: 'Délivrabilité', icon: <CheckCircleIcon size={24} /> },
   ];
 
   const features = [
     {
-      icon: '🎯',
+      icon: <TargetIcon />,
       title: 'Ciblage ultra-précis',
       description: 'Bases de données vérifiées, enrichissement multi-sources et segmentation avancée pour ne contacter que vos ICP.',
     },
     {
-      icon: '🤖',
+      icon: <BrainIcon />,
       title: 'Personnalisation IA',
       description: 'Notre IA analyse site web, LinkedIn, actualités et secteur pour rédiger des emails 100% personnalisés.',
     },
     {
-      icon: '📊',
+      icon: <ChartIcon />,
       title: 'A/B Testing systématique',
       description: 'Test permanent des objets, accroches, CTA et timings pour optimiser chaque élément de vos campagnes.',
     },
     {
-      icon: '🔒',
+      icon: <CheckCircleIcon />,
       title: 'Délivrabilité maximale',
       description: 'Infrastructure dédiée, warm-up progressif, domaines multiples et monitoring SPF/DKIM/DMARC.',
     },
     {
-      icon: '🔄',
+      icon: <RefreshIcon />,
       title: 'Séquences intelligentes',
       description: 'Follow-ups automatisés et personnalisés avec logique conditionnelle basée sur les comportements.',
     },
     {
-      icon: '📈',
+      icon: <TrendingUpIcon />,
       title: 'Scale sans compromis',
       description: 'Montée en volume progressive tout en maintenant qualité, personnalisation et taux de réponse élevés.',
     },
