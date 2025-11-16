@@ -10,43 +10,57 @@ import FeatureGrid from '@/components/business/FeatureGrid';
 import ProcessWorkflow from '@/components/business/ProcessWorkflow';
 import DashboardMockup from '@/components/business/DashboardMockup';
 import CTA from '@/components/business/CTA';
+import {
+  EmailIcon,
+  TargetIcon,
+  BrainIcon,
+  ChartIcon,
+  UsersIcon,
+  LinkedInIcon,
+  LightningIcon,
+  RefreshIcon,
+  CheckCircleIcon,
+  CalendarIcon,
+  MessageIcon,
+  TrendingUpIcon,
+} from '@/components/ui/Icons';
 
 export default function HomePage() {
   const stats = [
-    { number: '4000', suffix: '+', label: 'Emails personnalisés / mois', icon: '📧' },
-    { number: '1000', suffix: '+', label: 'Contacts LinkedIn / mois', icon: '👤' },
-    { number: '8', suffix: '%', label: 'Taux de réponse moyen', icon: '💬' },
-    { number: '15', suffix: '+', label: 'RDV qualifiés / mois', icon: '📅' },
+    { number: '4000', suffix: '+', label: 'Emails personnalisés / mois', icon: <EmailIcon size={24} /> },
+    { number: '1000', suffix: '+', label: 'Contacts LinkedIn / mois', icon: <UsersIcon size={24} /> },
+    { number: '8', suffix: '%', label: 'Taux de réponse moyen', icon: <MessageIcon size={24} /> },
+    { number: '15', suffix: '+', label: 'RDV qualifiés / mois', icon: <CalendarIcon size={24} /> },
   ];
 
   const features = [
     {
-      icon: '🎯',
+      icon: <TargetIcon />,
       title: 'Ciblage Ultra-Précis',
       description: 'Identification et qualification de vos prospects idéaux grâce à nos outils de ciblage avancés et notre expertise sectorielle.',
     },
     {
-      icon: '🤖',
+      icon: <BrainIcon />,
       title: 'Personnalisation IA',
       description: 'Chaque message est personnalisé par notre IA qui analyse le site, le LinkedIn, le secteur et le poste de votre prospect.',
     },
     {
-      icon: '📊',
+      icon: <ChartIcon />,
       title: 'Pilotage Data-Driven',
       description: 'Dashboard en temps réel, A/B testing permanent et optimisation continue de vos campagnes pour maximiser le ROI.',
     },
     {
-      icon: '🔄',
+      icon: <RefreshIcon />,
       title: 'Approche Multicanale',
       description: 'Combinaison stratégique de l\'email et de LinkedIn pour multiplier vos points de contact et vos taux de conversion.',
     },
     {
-      icon: '⚡',
+      icon: <LightningIcon />,
       title: 'Déploiement Rapide',
       description: 'Lancement de vos premières campagnes en moins de 2 semaines avec notre process rodé et notre équipe dédiée.',
     },
     {
-      icon: '🎓',
+      icon: <CheckCircleIcon />,
       title: 'Expertise Outbound',
       description: 'Plus de 50 campagnes lancées, des dizaines de secteurs accompagnés, une maîtrise complète de la prospection B2B.',
     },
@@ -54,22 +68,22 @@ export default function HomePage() {
 
   const pillars = [
     {
-      icon: '📧',
+      icon: <EmailIcon />,
       title: 'Cold Email À Grande Échelle',
       description: 'Jusqu\'à 4 000 emails personnalisés par mois avec une délivrabilité optimale et des copies testées.',
     },
     {
-      icon: '👔',
+      icon: <LinkedInIcon />,
       title: 'Automatisation LinkedIn Intelligente',
       description: 'Prospection LinkedIn ciblée avec messages 100% personnalisés par IA pour maximiser l\'engagement.',
     },
     {
-      icon: '🧠',
+      icon: <BrainIcon />,
       title: 'IA & Personnalisation',
       description: 'Notre IA analyse chaque prospect pour créer des messages uniques et pertinents à grande échelle.',
     },
     {
-      icon: '💰',
+      icon: <TrendingUpIcon />,
       title: 'Focus ROI',
       description: 'Objectif unique : générer des rendez-vous qualifiés et un pipeline commercial prévisible.',
     },
@@ -184,8 +198,8 @@ export default function HomePage() {
             <div className="space-y-6">
               <Card>
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                    <span className="text-2xl">✓</span>
+                  <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
+                    <CheckCircleIcon size={28} />
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-2">Personnalisation IA à l'échelle</h3>
@@ -199,8 +213,8 @@ export default function HomePage() {
 
               <Card>
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                    <span className="text-2xl">✓</span>
+                  <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
+                    <CheckCircleIcon size={28} />
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-2">Volumes massifs sans compromis</h3>
@@ -213,8 +227,8 @@ export default function HomePage() {
 
               <Card>
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                    <span className="text-2xl">✓</span>
+                  <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
+                    <CheckCircleIcon size={28} />
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-2">Approche multicanale native</h3>
@@ -227,8 +241,8 @@ export default function HomePage() {
 
               <Card>
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                    <span className="text-2xl">✓</span>
+                  <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
+                    <CheckCircleIcon size={28} />
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-2">Transparence totale</h3>

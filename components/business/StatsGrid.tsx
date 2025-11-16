@@ -1,13 +1,15 @@
 'use client';
 
+import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import Card from '@/components/ui/Card';
+import IconWrapper from '@/components/ui/IconWrapper';
 
 interface Stat {
   number: string;
   label: string;
   suffix?: string;
-  icon?: string;
+  icon?: string | ReactNode;
 }
 
 interface StatsGridProps {
@@ -34,7 +36,13 @@ export default function StatsGrid({ stats, columns = 4 }: StatsGridProps) {
         >
           <Card hover className="text-center">
             {stat.icon && (
-              <div className="text-5xl mb-4">{stat.icon}</div>
+              <div className="flex justify-center mb-4">
+                {typeof stat.icon === 'string' ? (
+                  <div className="text-5xl">{stat.icon}</div>
+                ) : (
+                  <IconWrapper variant="primary" size="lg">{stat.icon}</IconWrapper>
+                )}
+              </div>
             )}
             <div className="text-4xl md:text-5xl font-bold text-primary-500 mb-2">
               {stat.number}
